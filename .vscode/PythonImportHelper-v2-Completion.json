@@ -1,0 +1,98 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "pipeline",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "UnstructuredURLLoader",
+        "importPath": "langchain.document_loaders",
+        "description": "langchain.document_loaders",
+        "isExtraImport": true,
+        "detail": "langchain.document_loaders",
+        "documentation": {}
+    },
+    {
+        "label": "RecursiveCharacterTextSplitter",
+        "importPath": "langchain.text_splitter",
+        "description": "langchain.text_splitter",
+        "isExtraImport": true,
+        "detail": "langchain.text_splitter",
+        "documentation": {}
+    },
+    {
+        "label": "split_into_chunks",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def split_into_chunks(text, chunk_size=500, overlap=50):\n    \"\"\"Split text into chunks with a slight overlap for better context continuity.\"\"\"\n    text_splitter = RecursiveCharacterTextSplitter(\n        chunk_size=chunk_size,\n        chunk_overlap=overlap\n    )\n    docs = text_splitter.split_text(text)\n    return docs\n# Load Hugging Face question-answering model\nqa_pipeline = pipeline(\"question-answering\", model=\"distilbert-base-cased-distilled-squad\")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "urls",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "urls = []\nfor i in range(3):\n    url = st.sidebar.text_input(f\"URL {i+1}\")\n    urls.append(url)\nprocess_url_clicked = st.sidebar.button(\"Process URLs\")\nquery = st.text_input(\"Ask your question:\")\nmain_placeholder = st.empty()\n# Helper function: Split text into chunks\ndef split_into_chunks(text, chunk_size=500, overlap=50):\n    \"\"\"Split text into chunks with a slight overlap for better context continuity.\"\"\"",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "process_url_clicked",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "process_url_clicked = st.sidebar.button(\"Process URLs\")\nquery = st.text_input(\"Ask your question:\")\nmain_placeholder = st.empty()\n# Helper function: Split text into chunks\ndef split_into_chunks(text, chunk_size=500, overlap=50):\n    \"\"\"Split text into chunks with a slight overlap for better context continuity.\"\"\"\n    text_splitter = RecursiveCharacterTextSplitter(\n        chunk_size=chunk_size,\n        chunk_overlap=overlap\n    )",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "query",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "query = st.text_input(\"Ask your question:\")\nmain_placeholder = st.empty()\n# Helper function: Split text into chunks\ndef split_into_chunks(text, chunk_size=500, overlap=50):\n    \"\"\"Split text into chunks with a slight overlap for better context continuity.\"\"\"\n    text_splitter = RecursiveCharacterTextSplitter(\n        chunk_size=chunk_size,\n        chunk_overlap=overlap\n    )\n    docs = text_splitter.split_text(text)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "main_placeholder",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "main_placeholder = st.empty()\n# Helper function: Split text into chunks\ndef split_into_chunks(text, chunk_size=500, overlap=50):\n    \"\"\"Split text into chunks with a slight overlap for better context continuity.\"\"\"\n    text_splitter = RecursiveCharacterTextSplitter(\n        chunk_size=chunk_size,\n        chunk_overlap=overlap\n    )\n    docs = text_splitter.split_text(text)\n    return docs",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "qa_pipeline",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "qa_pipeline = pipeline(\"question-answering\", model=\"distilbert-base-cased-distilled-squad\")\n# If process URLs is clicked\nif process_url_clicked:\n    # Step 1: Load content from URLs\n    loader = UnstructuredURLLoader(urls=urls)\n    main_placeholder.text(\"Loading data from URLs... ✅\")\n    data = loader.load()\n    combined_text = \" \".join([doc.page_content for doc in data])\n    # Step 2: Split into manageable chunks\n    main_placeholder.text(\"Splitting text into chunks... ✅\")",
+        "detail": "main",
+        "documentation": {}
+    }
+]
